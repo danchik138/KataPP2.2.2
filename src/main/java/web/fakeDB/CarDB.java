@@ -1,16 +1,18 @@
-package web.model;
+package web.fakeDB;
+import web.model.Car;
+
 import java.util.ArrayList;
 import java.util.List;
 
-public class CarHolder {
+public class CarDB {
 
     private static List<Car> cars = new ArrayList<>();
 
     public static List<Car> getCars() {
-        return cars;
+        return List.copyOf(cars);
     }
     static {
-        for (int i = 1; i < 10; i+=2) {
+        for (int i = 1; i < 30; i+=2) {
             Car car = new Car();
             car.setModel("BMW X" + i);
             car.setVersion("i38" + i);

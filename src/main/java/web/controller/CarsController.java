@@ -4,10 +4,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import web.model.CarHolder;
+import web.fakeDB.CarDB;
+import web.service.CarFakeDBService;
+import web.service.CarService;
 
 @Controller
 public class CarsController {
+
+    CarService serivce = new CarFakeDBService();
 
     @GetMapping(value = "/cars")
     public String printCars(@RequestParam(value = "count", required = false) Integer count,
@@ -18,7 +22,7 @@ public class CarsController {
         } else {
             carsCount = count;
         }
-        model.addAttribute("cars", CarHolder.getCars().subList(0, carsCount));
+        model.addAttribute("cars", serivce.getFirstNCars(carsCount));
         return "cars";
     }
 
