@@ -9,7 +9,7 @@ import web.model.Car;
 import java.util.List;
 @Component
 public class CarFakeDBService implements CarService{
-    CarDao dao = new CarFakeDBDao();
+    private CarDao dao = new CarFakeDBDao();
 
     @Autowired
     public void setDao(CarDao dao) {
